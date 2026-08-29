@@ -14,25 +14,25 @@ const SHOP_DATA = {
   shop: {
     name: "Kathiyawadi Ghar",
     taglineGu: "ગાંઠિયા • ભજીયા • જલેબી",
-    phoneDisplay: "+91 98765 43210",
-    whatsappNumber: "919876543210",
+    phoneDisplay: "+91 9998643151,7778911509",
+    whatsappNumber: "+91 9998643151,7778911509",
     heroEyebrow: "🔥 Fresh from the karahi, every morning",
     heroHeadingLine1: "Garma-Garam",
     heroHeadingHighlight: "Kathiyawadi",
     heroHeadingLine2: "Nasto, Made Old-School",
     heroLead: "Crisp gathiya, hot bhajiya and syrup-soaked jalebi — the same recipe our Saurashtra kitchen has used for three generations. Order ahead, or walk in for a plate that's still crackling.",
     address: {
-      line1: "Shop No. 4, Nasto Bazar",
-      line2: "Opp. Cotton Market Gate, Bhavnagar, Gujarat – 364001",
-      cityLine: "Bhavnagar, Gujarat – 364001",
+      line1: "Shop No. 2, bareja circle",
+      line2: "Opp.Ahmedabad kheda highway, Ahmedabad, Gujarat – 364001",
+      cityLine: "Ahmedabad , Gujarat – 364001",
       note: "(sample address — replace with your shop's actual location)",
-      mapsQuery: "Nasto Bazar Bhavnagar Gujarat",
-      mapCardTitle: "Nasto Bazar, Bhavnagar"
+      mapsQuery: "22.856148,72.595345",
+      mapCardTitle: "Kathiyawadi Ghar, Ahmedabad"
     },
-    phoneNote: "(sample number)",
+    phoneNote: "(+91 9998643151,7778911509) — WhatsApp orders preferred",
     hours: [
-      { days: "Mon – Sat", time: "8:00 AM – 9:30 PM" },
-      { days: "Sunday", time: "7:00 AM – 1:00 PM (Jalebi Special)" }
+      { days: "Mon – Sat", time: "8:00 AM – 5:00PM" },
+      { days: "Sunday", time: "7:00 AM – 5:00 PM" }
     ],
     story: {
       heading: "Three Generations, One Karahi",
@@ -45,32 +45,28 @@ const SHOP_DATA = {
     },
     promo: {
       title: "Sunday Special",
-      text: "Jalebi-Fafda combo, made fresh every Sunday morning from 7 AM. First 50 plates get extra rabdi, free."
+      text: "Jalebi-Fafda combo, made fresh every Sunday morning from 8 AM. First 50 plates get extra jalebi, free."
     },
-    footerLine: "Made with ghee, garam masala, and a little too much love for fried food.",
+    footerLine: "Made with tel, garam masala, and a little too much love for fried food.",
     footerCopyright: "© 2026 Kathiyawadi Gathiya-Bhajiya Ghar. All rights reserved."
   },
   menuCategories: [
     { id: "gathiya", name: "Gathiya", tagline: "Crisp besan sticks, roasted spice", shape: "gathiya",
       displayItems: [
-        { label: "Tikha Gathiya", priceText: "₹120/kg" },
-        { label: "Sev Gathiya", priceText: "₹110/kg" },
-        { label: "Ratlami Jaadu Gathiya", priceText: "₹140/kg" },
-        { label: "Fafda-Gathiya Combo", priceText: "₹90/plate" }
+        { label: "vanela Gathiya", priceText: "₹600/kg" },
+        { label: "fafda", priceText: "₹600/kg" },
+        { label: "Fafda-Gathiya Combo", priceText: "₹120/plate" }
       ]},
     { id: "bhajiya", name: "Bhajiya", tagline: "Hand-dipped, fried fresh per order", shape: "bhajiya",
       displayItems: [
-        { label: "Kanda (Onion) Bhajiya", priceText: "₹80/plate" },
-        { label: "Bataka (Potato) Bhajiya", priceText: "₹80/plate" },
-        { label: "Mirchi Bhajiya", priceText: "₹90/plate" },
-        { label: "Methi-Palak Bhajiya", priceText: "₹90/plate" }
+        { label: "Kanda (Onion) Bhajiya", priceText: "₹30/plate" },
+        { label: "Bataka (Potato) Bhajiya", priceText: "₹30/plate" },
+        { label: "Methi-kanda Bhajiya", priceText: "₹60/plate" }
       ]},
     { id: "jalebi", name: "Jalebi", tagline: "Syrup-soaked, straight off the tawa", shape: "jalebi",
       displayItems: [
-        { label: "Garam Jalebi", priceText: "₹180/kg" },
-        { label: "Khova Jalebi", priceText: "₹240/kg" },
-        { label: "Jalebi-Fafda Combo", priceText: "₹100/plate" },
-        { label: "Rabdi Jalebi", priceText: "₹220/kg" }
+        { label: "Garam Jalebi", priceText: "₹300/kg" },
+        { label: "Jalebi-Fafda Combo", priceText: "₹90/plate" },
       ]}
   ],
   orderItems: [
