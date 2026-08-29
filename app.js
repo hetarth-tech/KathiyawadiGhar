@@ -1,20 +1,16 @@
 /* ============================================================
    Kathiyawadi Ghar — site logic
-   All shop content (name, address, phone, menu, prices) lives in
-   shop-data.json. Edit that file to update the site — no HTML/CSS
-   changes needed.
+   All shop content (name, address, phone, menu, prices) lives right
+   here in the SHOP_DATA object below. Edit these values to update
+   the site — no other file needs to change.
 
-   NOTE: fetch() of a local JSON file is blocked by the browser when
-   you just double-click the HTML file (file:// has no CORS access).
-   To see shop-data.json load correctly, serve the folder with a
-   local server, e.g. from a terminal in this folder:
-     python3 -m http.server 8000
-   then open http://localhost:8000/kathiyawadi-shop.html
-   If you skip this, the page still works — it falls back to the
-   sample data below.
+   This file is loaded with a plain <script> tag, so there is no
+   fetch() and no file:// restriction: you can open the HTML file
+   directly by double-clicking it, or host it anywhere, and it
+   works the same way either time.
    ============================================================ */
 
-const FALLBACK_DATA = {
+const SHOP_DATA = {
   shop: {
     name: "Kathiyawadi Ghar",
     taglineGu: "ગાંઠિયા • ભજીયા • જલેબી",
@@ -117,14 +113,13 @@ const SHAPES = {
     </g></svg>`
 };
 
-let DATA = null;
+const DATA = SHOP_DATA;
 const qty = {};      // { itemName: numberOfPacks }
 const weight = {};   // { itemName: gramsPerPack }
 
 init();
 
-async function init() {
-  DATA = await loadData();
+function init() {
   renderBunting();
   renderBrandAndHero(DATA.shop);
   renderMenu(DATA.menuCategories);
@@ -136,17 +131,6 @@ async function init() {
   wireNav();
   wireReveal();
   wireOrderForm(DATA.shop);
-}
-
-async function loadData() {
-  try {
-    const res = await fetch('shop-data.json', { cache: 'no-store' });
-    if (!res.ok) throw new Error('bad response');
-    return await res.json();
-  } catch (err) {
-    document.getElementById('dataWarning').classList.add('show');
-    return FALLBACK_DATA;
-  }
 }
 
 function renderBunting() {

@@ -374,13 +374,6 @@ footer .fname{font-family:'Yatra One',cursive;color:var(--maroon);font-size:1.2r
 .reveal{opacity:0;transform:translateY(24px);transition:all .7s ease;}
 .reveal.in-view{opacity:1;transform:translateY(0);}
 
-.data-warning{
-  display:none;
-  background:var(--chili);color:var(--paper);text-align:center;
-  padding:10px 6vw;font-weight:700;font-size:0.9rem;
-}
-.data-warning.show{display:block;}
-
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important;}
 }
