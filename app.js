@@ -66,7 +66,7 @@ const SHOP_DATA = {
     { id: "jalebi", name: "Jalebi", tagline: "Syrup-soaked, straight off the tawa", shape: "jalebi",
       displayItems: [
         { label: "Garam Jalebi", priceText: "₹300/kg" },
-        { label: "Jalebi-Fafda Combo", priceText: "₹90/plate" },
+        { label: "Jalebi-Fafda Combo", priceText: "₹900/kg" },
       ]}
   ],
   orderItems: [
