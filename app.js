@@ -14,11 +14,11 @@ const SHOP_DATA = {
   shop: {
     name: "Kathiyawadi Ghar",
     taglineGu: "ગાંઠિયા • ભજીયા • જલેબી",
-    phoneDisplay: "+91 9998643151,7778911509",
-    whatsappNumber: "+91 9998643151,7778911509",
+    phoneDisplay: "+91 7778911509",
+    whatsappNumber: "+91 7778911509",
     heroEyebrow: "🔥 Fresh from the karahi, every morning",
     heroHeadingLine1: "Garma-Garam",
-    heroHeadingHighlight: "Kathiyawadi",
+    heroHeadingHighlight: "Kathiyawadi gathiya-bhajiya",
     heroHeadingLine2: "Nasto, Made Old-School",
     heroLead: "Crisp gathiya, hot bhajiya and syrup-soaked jalebi — the same recipe our Saurashtra kitchen has used for three generations. Order ahead, or walk in for a plate that's still crackling.",
     address: {
@@ -29,7 +29,7 @@ const SHOP_DATA = {
       mapsQuery: "22.856148,72.595345",
       mapCardTitle: "Kathiyawadi Ghar, Ahmedabad"
     },
-    phoneNote: "(+91 9998643151,7778911509) — WhatsApp orders preferred",
+    phoneNote: "(+91 7778911509) — WhatsApp orders preferred",
     hours: [
       { days: "Mon – Sat", time: "8:00 AM – 5:00PM" },
       { days: "Sunday", time: "7:00 AM – 5:00 PM" }
@@ -70,15 +70,12 @@ const SHOP_DATA = {
       ]}
   ],
   orderItems: [
-    { name: "Tikha Gathiya", pricePerKg: 120 },
-    { name: "Sev Gathiya", pricePerKg: 110 },
-    { name: "Ratlami Jaadu Gathiya", pricePerKg: 140 },
-    { name: "Kanda Bhajiya", pricePerKg: 320 },
-    { name: "Bataka Bhajiya", pricePerKg: 320 },
-    { name: "Mirchi Bhajiya", pricePerKg: 360 },
-    { name: "Garam Jalebi", pricePerKg: 180 },
-    { name: "Khova Jalebi", pricePerKg: 240 },
-    { name: "Rabdi Jalebi", pricePerKg: 220 }
+    { name: "vanela Gathiya", pricePerKg: 600 },
+    { name: "fafda", pricePerKg: 600 },
+    { name: "Kanda Bhajiya", pricePerKg: 300 },
+    { name: "Bataka Bhajiya", pricePerKg: 300 },
+    { name: "Methi-kanda Bhajiya", pricePerKg: 600 },
+    { name: "Garam Jalebi", pricePerKg: 300 },
   ],
   weightOptions: [100, 200, 500, 1000]
 };
