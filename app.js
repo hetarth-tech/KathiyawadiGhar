@@ -66,7 +66,8 @@ const FALLBACK_DATA = {
       displayItems: [
         { label: "Kanda (Onion) Bhajiya", priceText: "₹30/plate" },
         { label: "Bataka (Potato) Bhajiya", priceText: "₹30/plate" },
-        { label: "Methi-kanda Bhajiya", priceText: "₹60/plate" }
+        { label: "Methi-kanda Bhajiya", priceText: "₹60/plate" },
+        { label: "mix bhajiya", priceText: "₹30/plate" }
       ]},
     { id: "jalebi", name: "Jalebi", tagline: "Syrup-soaked, straight off the tawa", shape: "jalebi",
       displayItems: [
