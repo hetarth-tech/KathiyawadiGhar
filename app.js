@@ -1,38 +1,42 @@
 /* ============================================================
    Kathiyawadi Ghar — site logic
-   All shop content (name, address, phone, menu, prices) lives right
-   here in the SHOP_DATA object below. Edit these values to update
-   the site — no other file needs to change.
+   All shop content (name, address, phone, menu, prices) lives in
+   shop-data.json. Edit that file to update the site — no HTML/CSS
+   changes needed.
 
-   This file is loaded with a plain <script> tag, so there is no
-   fetch() and no file:// restriction: you can open the HTML file
-   directly by double-clicking it, or host it anywhere, and it
-   works the same way either time.
+   NOTE: fetch() of a local JSON file is blocked by the browser when
+   you just double-click the HTML file (file:// has no CORS access).
+   To see shop-data.json load correctly, serve the folder with a
+   local server, e.g. from a terminal in this folder:
+     python3 -m http.server 8000
+   then open http://localhost:8000/kathiyawadi-shop.html
+   If you skip this, the page still works — it falls back to the
+   sample data below.
    ============================================================ */
 
-const SHOP_DATA = {
+const FALLBACK_DATA = {
   shop: {
     name: "Kathiyawadi Ghar",
     taglineGu: "ગાંઠિયા • ભજીયા • જલેબી",
-    phoneDisplay: "+91 7778911509",
-    whatsappNumber: "+91 7778911509",
+    phoneDisplay: "+91 9998643151",
+    whatsappNumber: "91 9998643151",
     heroEyebrow: "🔥 Fresh from the karahi, every morning",
     heroHeadingLine1: "Garma-Garam",
-    heroHeadingHighlight: "Kathiyawadi gathiya-bhajiya",
+    heroHeadingHighlight: "Kathiyawadi",
     heroHeadingLine2: "Nasto, Made Old-School",
     heroLead: "Crisp gathiya, hot bhajiya and syrup-soaked jalebi — the same recipe our Saurashtra kitchen has used for three generations. Order ahead, or walk in for a plate that's still crackling.",
     address: {
       line1: "Shop No. 2, bareja circle",
-      line2: "Opp.Ahmedabad kheda highway, Ahmedabad, Gujarat – 364001",
-      cityLine: "Ahmedabad , Gujarat – 364001",
+      line2: "Opp. ahemdabad-kheda highway, ahemdabad, Gujarat – 364001",
+      cityLine: "ahemdabad, Gujarat – 364001",
       note: "(sample address — replace with your shop's actual location)",
-      mapsQuery: "22.856148,72.595345",
-      mapCardTitle: "Kathiyawadi Ghar, Ahmedabad"
+      mapsQuery: "bareja circle ahemdabad Gujarat",
+      mapCardTitle: "nasta hub"
     },
-    phoneNote: "(+91 7778911509) — WhatsApp orders preferred",
+    phoneNote: "(9998643151)",
     hours: [
-      { days: "Mon – Sat", time: "8:00 AM – 5:00PM" },
-      { days: "Sunday", time: "7:00 AM – 5:00 PM" }
+      { days: "Mon – Sat", time: "8:00 AM – 4:30 PM" },
+      { days: "Sunday", time: "7:00 AM – 4:00 PM (Jalebi Special)" }
     ],
     story: {
       heading: "Three Generations, One Karahi",
@@ -45,7 +49,7 @@ const SHOP_DATA = {
     },
     promo: {
       title: "Sunday Special",
-      text: "Jalebi-Fafda combo, made fresh every Sunday morning from 8 AM. First 50 plates get extra jalebi, free."
+      text: "Jalebi-Fafda combo, made fresh every Sunday morning from 7 AM. First 50 plates get extra jalebi, free."
     },
     footerLine: "Made with tel, garam masala, and a little too much love for fried food.",
     footerCopyright: "© 2026 Kathiyawadi Gathiya-Bhajiya Ghar. All rights reserved."
@@ -55,7 +59,8 @@ const SHOP_DATA = {
       displayItems: [
         { label: "vanela Gathiya", priceText: "₹600/kg" },
         { label: "fafda", priceText: "₹600/kg" },
-        { label: "Fafda-Gathiya Combo", priceText: "₹120/plate" }
+        { label: "Fafda-Gathiya Combo", priceText: "₹120/plate" },
+        { label: "Fafda-Gathiya-Jalebi Combo", priceText: "₹150/plate" }
       ]},
     { id: "bhajiya", name: "Bhajiya", tagline: "Hand-dipped, fried fresh per order", shape: "bhajiya",
       displayItems: [
@@ -66,7 +71,7 @@ const SHOP_DATA = {
     { id: "jalebi", name: "Jalebi", tagline: "Syrup-soaked, straight off the tawa", shape: "jalebi",
       displayItems: [
         { label: "Garam Jalebi", priceText: "₹300/kg" },
-        { label: "Jalebi-Fafda Combo", priceText: "₹900/kg" },
+        { label: "Jalebi-Fafda Combo", priceText: "₹90/plate" }
       ]}
   ],
   orderItems: [
@@ -74,8 +79,7 @@ const SHOP_DATA = {
     { name: "fafda", pricePerKg: 600 },
     { name: "Kanda Bhajiya", pricePerKg: 300 },
     { name: "Bataka Bhajiya", pricePerKg: 300 },
-    { name: "Methi-kanda Bhajiya", pricePerKg: 600 },
-    { name: "Garam Jalebi", pricePerKg: 300 },
+    { name: "Garam Jalebi", pricePerKg: 300 }
   ],
   weightOptions: [100, 200, 500, 1000]
 };
@@ -106,13 +110,14 @@ const SHAPES = {
     </g></svg>`
 };
 
-const DATA = SHOP_DATA;
+let DATA = null;
 const qty = {};      // { itemName: numberOfPacks }
 const weight = {};   // { itemName: gramsPerPack }
 
 init();
 
-function init() {
+async function init() {
+  DATA = await loadData();
   renderBunting();
   renderBrandAndHero(DATA.shop);
   renderMenu(DATA.menuCategories);
@@ -124,6 +129,17 @@ function init() {
   wireNav();
   wireReveal();
   wireOrderForm(DATA.shop);
+}
+
+async function loadData() {
+  try {
+    const res = await fetch('shop-data.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('bad response');
+    return await res.json();
+  } catch (err) {
+    document.getElementById('dataWarning').classList.add('show');
+    return FALLBACK_DATA;
+  }
 }
 
 function renderBunting() {
